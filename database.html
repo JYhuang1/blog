@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <!--<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="description" content="Your description goes here" />
     <meta name="keywords" content="your,keywords,goes,here" />
     <meta name="author" content="Henry" />
@@ -54,16 +54,16 @@
     </div>
 </nav>
 <div class="container layout">
-    <div class="row smaller">
+    <div class="bigNav row smaller">
         <div class="col c5 smaller">
             <h1><a href="aboutme.html">拾荒者</a></h1>
         </div>
         <!--<div class="col c7 aligncenter">-->
-            <!--<p class="slogan">LOGO</p>-->
+        <!--<p class="slogan">LOGO</p>-->
         <!--</div>-->
     </div>
 
-    <div class="row" style="margin-bottom: 15px">
+    <div class="bigNav row" style="margin-bottom: 15px">
         <div class="col c12 aligncenter">
             <img src="images/front.jpg" width="960" height="240" alt="" />
         </div>
@@ -76,7 +76,7 @@
                     <ul class="subpages">
                         <li><a  href="devtool.html">开发工具</a></li>
                         <li><a  href="front.html">前端技术</a></li>
-                        <li><a  href="background.html">后台技术</a></li>
+                        <li><a href="background.html">后台技术</a></li>
                         <li><a class="current" href="database.html">数据库</a></li>
                     </ul>
                 </li>
@@ -97,17 +97,8 @@
             </ul>
         </div>
 
-        <div class="col-sm-12 col-md-6">
-            <div style="margin-bottom: 20px">
-                <h2><a href="detail.html">MYSQL 学习笔记</a></h2>
-                <span>T:</span><span>2016,1,2</span><span style="margin-left: 20px">comment:</span><span>3</span>
-                <h5 style="margin-top: 5px">MySQL 5的最大特点是其结合了企业级数据库的特性，又保留了原数据库的简易性和高效性。在MySQL 5中新出现的企业级数据库支持有：视图，触发器，存储过程，游标等</h5>
-            </div>
-            <div style="margin-bottom: 20px">
-                <h2><a href="detail.html">MYSQL 学习笔记</a></h2>
-                <span>T:</span><span>2016,1,2</span><span style="margin-left: 20px">comment:</span><span>3</span>
-                <h5 style="margin-top: 5px">MySQL 5的最大特点是其结合了企业级数据库的特性，又保留了原数据库的简易性和高效性。在MySQL 5中新出现的企业级数据库支持有：视图，触发器，存储过程，游标等</h5>
-            </div>
+        <div id="content" class="col-sm-12 col-md-6">
+            <!-- 博文放到这里-->
         </div>
 
         <div class="col-sm-12 col-md-3">
@@ -131,5 +122,10 @@
 <script  src="js/jquery/jquery.min.js"></script>
 <script src="js/bootstrap/bootstrap.min.js"></script>
 <script src="js/self/main.js"></script>
+<script>
+    $(document).ready(function(){
+        selectByCategory(4);
+    })
+</script>
 </body>
 </html>

@@ -97,17 +97,8 @@
             </ul>
         </div>
 
-        <div class="col-sm-12 col-md-6">
-            <div style="margin-bottom: 20px">
-                <h2><a href="detail.html">HTML学习笔记</a></h2>
-                <span>T:</span><span>2016,1,2</span><span style="margin-left: 20px">comment:</span><span>3</span>
-                <h5 style="margin-top: 5px">HTML(Hyper Text Mark-up Language超文本标记语言)，标记就是用来描述网页内容的一些特定符号，HTML不是编程语言，而是一种描述性的标记语言，用于描述网页中内容的显示方式，比如文字以什么颜色、大小来显示，这些都是利用HTML标记来实现的.</h5>
-            </div>
-            <div style="margin-bottom: 20px">
-                <h2><a href="detail.html">HTML学习笔记</a></h2>
-                <span>T:</span><span>2016,1,2</span><span style="margin-left: 20px">comment:</span><span>3</span>
-                <h5 style="margin-top: 5px">HTML(Hyper Text Mark-up Language超文本标记语言)，标记就是用来描述网页内容的一些特定符号，HTML不是编程语言，而是一种描述性的标记语言，用于描述网页中内容的显示方式，比如文字以什么颜色、大小来显示，这些都是利用HTML标记来实现的.</h5>
-            </div>
+        <div id="content" class="col-sm-12 col-md-6">
+           <!-- 博文放到這里-->
         </div>
 
         <div class="col-sm-12 col-md-3">
@@ -131,5 +122,10 @@
 <script  src="js/jquery/jquery.min.js"></script>
 <script src="js/bootstrap/bootstrap.min.js"></script>
 <script src="js/self/main.js"></script>
+<script>
+    $(document).ready(function(){
+        selectByCategory(2);
+    })
+</script>
 </body>
 </html>

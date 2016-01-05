@@ -97,17 +97,8 @@
             </ul>
         </div>
 
-        <div class="col-sm-12 col-md-6">
-            <div style="margin-bottom: 20px">
-                <h2><a href="detail.html">Spring MVC</a></h2>
-                <span>T:</span><span>2016,1,2</span><span style="margin-left: 20px">comment:</span><span>3</span>
-                <h5 style="margin-top: 5px">Spring MVC是一种基于Java的实现了Web MVC设计模式的请求驱动类型的轻量级Web框架，即使用了MVC架构模式的思想，将web层进行职责解耦，基于请求驱动指的就是使用请求-响应模型，框架的目的就是帮助我们简化开发，Spring Web MVC也是要简化我们日常Web开发的。</h5>
-            </div>
-            <div style="margin-bottom: 20px">
-                <h2><a href="detail.html">Spring MVC</a></h2>
-                <span>T:</span><span>2016,1,2</span><span style="margin-left: 20px">comment:</span><span>3</span>
-                <h5 style="margin-top: 5px">Spring MVC是一种基于Java的实现了Web MVC设计模式的请求驱动类型的轻量级Web框架，即使用了MVC架构模式的思想，将web层进行职责解耦，基于请求驱动指的就是使用请求-响应模型，框架的目的就是帮助我们简化开发，Spring Web MVC也是要简化我们日常Web开发的。</h5>
-            </div>
+        <div id="content" class="col-sm-12 col-md-6">
+            <!-- 博文放到这里-->
         </div>
 
         <div class="col-sm-12 col-md-3">
@@ -131,5 +122,10 @@
 <script  src="js/jquery/jquery.min.js"></script>
 <script src="js/bootstrap/bootstrap.min.js"></script>
 <script src="js/self/main.js"></script>
+<script>
+    $(document).ready(function(){
+        selectByCategory(3);
+    })
+</script>
 </body>
 </html>

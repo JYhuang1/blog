@@ -1,5 +1,5 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
@@ -96,17 +96,8 @@
             </ul>
         </div>
 
-        <div class="col-sm-12 col-md-6">
-            <div >
-                <h2><a href="detail.html">GIT 学习圣经</a></h2>
-                <span>T:</span><span>2016,1,2</span><span style="margin-left: 20px">comment:</span><span>3</span>
-                <h5>The entire Pro Git book, written by Scott Chacon and Ben Straub and published by Apress, is available here. All content is licensed under the Creative Commons Attribution Non Commercial Share Alike 3.0 license. Print versions of the book are available on Amazon.com.</h5>
-            </div>
-            <div style="margin-top: 20px">
-                <h2><a href="detail.html">GIT 学习圣经</a></h2>
-                <span>T:</span><span>2016,1,2</span><span style="margin-left: 20px">comment:</span><span>3</span>
-                <h5>The entire Pro Git book, written by Scott Chacon and Ben Straub and published by Apress, is available here. All content is licensed under the Creative Commons Attribution Non Commercial Share Alike 3.0 license. Print versions of the book are available on Amazon.com.</h5>
-            </div>
+        <div id="content" class="col-sm-12 col-md-6">
+            <!-- 博文放到这里-->
         </div>
 
         <div class="col-sm-12 col-md-3">
@@ -129,5 +120,10 @@
 <script  src="js/jquery/jquery.min.js"></script>
 <script src="js/bootstrap/bootstrap.min.js"></script>
 <script src="js/self/main.js"></script>
+<script>
+    $(document).ready(function(){
+        selectByCategory(1);
+    })
+</script>
 </body>
 </html>
