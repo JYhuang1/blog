@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>编辑文章</title>
+    <link rel="stylesheet" type="text/css" href="css/simditor.css" />
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <style>
+        input:focus {
+            outline: none;
+            box-shadow: none;
+        }
+        input{
+            padding-left: 10px;border: none; box-shadow: none;
+        }
+    </style>
+</head>
+<body>
+<div class="row" style="margin-top: 20px;padding:10px 10px 10px 10px;margin-bottom: 50px">
+    <div  class="col-md-6 col-md-offset-3 col-sm-12">
+        <input id="title" style="width: 100%;height: 50px;font-size: 20px;"  placeholder="这里输入标题" >
+        <input id="tag"  style="height: 35px;" placeholder="文章标签">
+        <textarea id="editor" autofocus>
+            <!--内容在这里-->
+        </textarea>
+        <div style="border: 1px solid #eeeeee;padding: 10px;margin-top: 5px">
+            <h5 class="text-info">转载信息</h5>
+            <input id="fromAuthor" style="height: 35px;width: 20%" placeholder="原作者">
+            <input id="fromUrl" style="height: 35px;width: 75%" placeholder="原文链接">
+        </div>
+        <div style="border: 1px solid #eeeeee;padding: 10px;margin-top: 5px">
+            <h5 class="text-info">发布样式编辑</h5>
+            <button id="uploadNative" class="btn btn-success" >本地上传</button>
+            <button id="chooseFromKu" class="btn btn-success">图片库选择</button><br/>
+            <img src="#"><hr>
+
+            <div>摘要</div>
+            <textarea id="brief" style="width: 100%">
+
+            </textarea>
+        </div>
+    </div>
+</div>
+<div class="navbar-fixed-bottom " style="width: 100%;height: 50px;border-top: 1px solid #eeeeee ;padding: 10px;background: white">
+    <button class="btn btn-success col-md-2 col-md-offset-2" onclick={consle()}>使用模板</button>
+    <button class="btn btn-success col-md-1 col-md-offset-5" onclick={editor.addArticle()}>提交</button>
+</div>
+<script type="text/javascript" src="js/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="js/simditor/module.js"></script>
+<script type="text/javascript" src="js/simditor/hotkeys.js"></script>
+<script type="text/javascript" src="js/simditor/uploader.js"></script>
+<script type="text/javascript" src="js/simditor/simditor.js"></script>
+<script type="text/javascript" src="js/self/main.js"></script>
+<script >
+
+    function Editor(){}
+    Editor.prototype.addArticle = function() {
+
+//        localStorage.articleNum = tag;
+        param['dataJson'] = JSON.stringify({
+            author:"拾荒者",
+            title: document.getElementById('title').value,
+            fromAuthor: document.getElementById('fromAuthor').value,
+            fromUrl: document.getElementById('fromUrl').value,
+            brief: document.getElementById('brief').value,
+            content: simditor.sync(this),
+            tag: document.getElementById('tag').value
+        });
+        $.post(server + "addArticle", param, function (data) {
+            console.log(data);
+            var dataJson = JSON.parse(data);
+            if (dataJson.status == 0) {
+                alert(dataJson.message);
+            }
+
+        });
+    };
+    Editor.prototype.chooseMoudle = function(module){
+        simditor.setValue(module.content);
+        document.getElementById("title").value = module.title;
+    };
+    var editor = new Editor();
+
+    var simditor = new Simditor({
+        textarea: $('#editor'),
+        placeholder: '这里输入内容',
+        defaultImage: 'images/image.png',
+        params: {},
+        upload: {
+            params: null,
+            fileKey: 'upload_file',
+            connectionCount: 3,
+            leaveConfirm: 'Uploading is in progress, are you sure to leave this page?'
+        },
+        tabIndent: true,
+        toolbar: [
+            'title',
+            'bold',
+            'italic',
+            'underline',
+            'strikethrough',
+            'fontScale',
+            'color',
+            'ol',             //ordered list
+            'ul'   ,          // unordered list
+            'blockquote',
+            'code' ,          //code block
+            'table',
+            'link',
+            'image',
+            'hr',             //horizontal ruler
+            'indent',
+            'outdent',
+            'alignment'
+        ],
+        toolbarFloat: true,
+        toolbarFloatOffset: 0,
+        toolbarHidden: false,
+        pasteImage: false,
+        cleanPaste: false
+
+    });
+
+    function consle(){
+        console.log(simditor.sync());
+    }
+
+</script>
+</body>
+</html>

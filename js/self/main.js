@@ -10,9 +10,10 @@ $(".banner").on("click",function(){
 //var server = "http://localhost:8080/blog/";
 var server = "http://115.28.33.164:8080/blog/";
 var param = {};
-function selectByCategory(category){
-    param['dataJson'] = JSON.stringify({category:category});
-    $.post(server+"selectByCategory",param,function(data){
+function selectByTag(tag){
+    param['dataJson'] = JSON.stringify({tag:tag});
+    $.post(server+"selectByTag",param,function(data){
+        console.log(data);
         var dataJson = $.parseJSON(data);
         if (dataJson.status == 0){
             var num = dataJson.data.length;
@@ -34,6 +35,6 @@ function selectByCategory(category){
 function dateToString(longDate){
     var date = new Date(longDate);
     month = date.getMonth()+1;
-    var returnDate = date.getFullYear()+","+month+","+date.getDate();
+    var returnDate = date.getFullYear()+"年"+month+"月"+date.getDate()+"日";
     return returnDate;
 }

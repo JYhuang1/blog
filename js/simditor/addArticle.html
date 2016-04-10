@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>编辑文章</title>
+
+    <link rel="stylesheet" type="text/css" href="css/simditor.css" />
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <style>
+        input:focus {
+            outline: none;
+            box-shadow: none;
+        }
+        input{
+            padding-left: 10px;border: none; box-shadow: none;
+        }
+    </style>
+</head>
+<body>
+<div class="row" style="margin-top: 20px;padding:10px 10px 10px 10px;margin-bottom: 50px">
+    <div  class="col-md-6 col-md-offset-3 col-sm-12">
+        <input id="title" style="width: 100%;height: 50px;font-size: 30px;"  placeholder="在这里输入标题" >
+        <input id="author" class="col-md-6" style="height: 35px;font-size: 18px;" placeholder="这里输入作者">
+        <input id="articleNum"  style="height: 35px;font-size: 18px;" placeholder="文章编号">
+        <textarea id="editor" autofocus>
+            <!--内容在这里-->
+        </textarea>
+    </div>
+</div>
+<div class="navbar-fixed-bottom " style="width: 100%;height: 50px;border-top: 1px solid #eeeeee ;padding: 10px;background: white">
+    <button class="btn btn-success col-md-2 col-md-offset-2" onclick={editor.chooseMoudle(module1)}>使用模板</button>
+    <button class="btn btn-success col-md-1 col-md-offset-2" onclick={editor.addArticle()}>提交</button>
+</div>
+<script type="text/javascript" src="js/ku/jquery.min.js"></script>
+<script type="text/javascript" src="js/ku/module.js"></script>
+<script type="text/javascript" src="js/ku/hotkeys.min.js"></script>
+<script type="text/javascript" src="js/ku/uploader.js"></script>
+<script type="text/javascript" src="js/ku/simditor.js"></script>
+<script type="text/javascript" src="js/self/main.js"></script>
+<script >
+
+    function Editor(){}
+    function Module1 (){
+        this.title="巴迪商学基础工具包";
+        this.content = (
+        '<p>产品亮点</p>'+
+        '<a href="http://www.baidu.com" className="btn btn-success">立即购买</a><hr>'+
+        '<p>产品详情</p>'+
+        '<p>这里写产品详情介绍</p><hr>'+
+        '<p>收益情况</p>'+
+        '<p>这里写产品收益介绍</p><hr>'+
+        '<p>保障方式</p>'+
+        '<p>这里写产品的保障方式</p>')
+    }
+    var module1 = new Module1();
+    Editor.prototype.addArticle = function() {
+        var title = document.getElementById('title').value;
+        var author = document.getElementById('author').value;
+        var articleNum = document.getElementById('articleNum').value;
+        localStorage.articleNum = articleNum;
+        var content = simditor.sync(this);
+        console.log(content);
+        param['dataJson'] = JSON.stringify({
+            title: title,
+            author: author,
+            content: content,
+            tag: 1,
+            articleNum: articleNum
+        });
+        $.post(server + "addArticle", param, function (data) {
+            console.log(data);
+            var dataJson = JSON.parse(data);
+            if (dataJson.status == 0) {
+                alert(dataJson.message);
+                location.href = "showArticle.html"
+            }
+
+        });
+    };
+    Editor.prototype.chooseMoudle = function(module){
+        simditor.setValue(module.content);
+        document.getElementById("title").value = module.title;
+    };
+    var editor = new Editor();
+
+    var simditor = new Simditor({
+        textarea: $('#editor'),
+        placeholder: '这里输入内容',
+        defaultImage: 'images/image.png',
+        params: {},
+        upload: {
+            params: null,
+            fileKey: 'upload_file',
+            connectionCount: 3,
+            leaveConfirm: 'Uploading is in progress, are you sure to leave this page?'
+        },
+        tabIndent: true,
+        toolbar: [
+            'title',
+            'bold',
+            'italic',
+            'underline',
+            'strikethrough',
+            'fontScale',
+            'color',
+            'ol',             //ordered list
+            'ul'   ,          // unordered list
+            'blockquote',
+            'code' ,          //code block
+            'table',
+            'link',
+            'image',
+            'hr',             //horizontal ruler
+            'indent',
+            'outdent',
+            'alignment'
+        ],
+        toolbarFloat: true,
+        toolbarFloatOffset: 0,
+        toolbarHidden: false,
+        pasteImage: false,
+        cleanPaste: false
+
+    });
+
+</script>
+</body>
+</html>
