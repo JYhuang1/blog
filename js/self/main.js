@@ -13,16 +13,20 @@ var param = {};
 function selectByTag(tag){
     param['dataJson'] = JSON.stringify({tag:tag});
     $.post(server+"selectByTag",param,function(data){
-        console.log(data);
         var dataJson = $.parseJSON(data);
         if (dataJson.status == 0){
             var num = dataJson.data.length;
             for(var i=0;i<num;i++){
                 $('#content').append(
-                    "<div style='border-bottom: 1px solid #eeeeee;margin-bottom: 15px'>"+
-                    "<h2><a href='detail.html'>"+dataJson.data[i].title+"</a></h2>"+
-                    "<span>T: </span><span>"+dateToString(dataJson.data[i].createTime)+"</span><span style='margin-left: 20px'>comment: </span><span>"+dataJson.data[i].comments+"</span>"+
+                    "<div style='border-bottom: 1px solid #eeeeee;padding-bottom: 4px'>"+
+                    "<h2 style='font-size: 20px'><a href='detail.html'>"+dataJson.data[i].title+"</a></h2>"+
                     "<p style='margin-top: 5px;margin-bottom: 5px'>"+dataJson.data[i].brief+"</p>"+
+                    "<div class='row'>" +
+                    "<span class='col-sm-3 glyphicon glyphicon-thumbs-up'>&nbsp;1</span>"+
+                    "<span class='col-sm-3 glyphicon glyphicon-envelope'>&nbsp;"+dataJson.data[i].comments+"</span>"+
+                    "<span class='col-sm-3 glyphicon glyphicon-time'>&nbsp;"+dateToString(dataJson.data[i].createTime)+"</span>"+
+                    "<span class='col-sm-3 glyphicon glyphicon-tag'>&nbsp;前端</span>"+
+                    "</div>"+
                     "</div>"
                 );
             }
@@ -35,6 +39,6 @@ function selectByTag(tag){
 function dateToString(longDate){
     var date = new Date(longDate);
     month = date.getMonth()+1;
-    var returnDate = date.getFullYear()+"年"+month+"月"+date.getDate()+"日";
+    var returnDate = date.getFullYear().toString().substring(2,4)+"-"+month+"-"+date.getDate();
     return returnDate;
 }
