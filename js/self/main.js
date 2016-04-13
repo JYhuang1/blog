@@ -21,13 +21,13 @@ function selectByTag(){
 
                 $('#content').append(
                     "<div style='border-bottom: 1px solid #eeeeee;padding-bottom: 4px'>"+
-                    "<h2 style='font-size: 26px'><a href='detail.html' id='uuid"+i+"'>"+dataJson.data[i].title+"</a></h2>"+
-                    "<p style='margin-top: 5px;margin-bottom: 5px'>"+dataJson.data[i].brief+"</p>"+
+                    "<h2 style='font-size: 20px'><a href='detail.html' id='uuid"+i+"'>"+dataJson.data[i].title+"</a></h2>"+
+                    "<p style='margin-top: 5px;margin-bottom: 5px;font-size: 14px'>"+dataJson.data[i].brief+"</p>"+
                     "<div class='row' style='font-size: 14px'>" +
-                    "<span class='col-sm-3 glyphicon glyphicon-thumbs-up'>1</span>"+
-                    "<span class='col-sm-3 glyphicon glyphicon-envelope'>"+dataJson.data[i].comments+"</span>"+
-                    "<span class='col-sm-3 glyphicon glyphicon-time'>"+dateToString(dataJson.data[i].createTime)+"</span>"+
-                    "<span class='col-sm-3 glyphicon glyphicon-tag'>"+getTagNameByTagNo(dataJson.data[i].tag)+"</span>"+
+                    "<span class='col-sm-3 glyphicon glyphicon-thumbs-up'>&nbsp;1</span>"+
+                    "<span class='col-sm-3 glyphicon glyphicon-envelope'>&nbsp;"+dataJson.data[i].comments+"</span>"+
+                    "<span class='col-sm-3 glyphicon glyphicon-time'>&nbsp;"+dateToString(dataJson.data[i].createTime)+"</span>"+
+                    "<span class='col-sm-3 glyphicon glyphicon-tag'>&nbsp;"+getTagNameByTagNo(dataJson.data[i].tag)+"</span>"+
                     "</div>"+
                     "</div>"
                 );
