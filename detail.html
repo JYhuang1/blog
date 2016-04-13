@@ -7,7 +7,7 @@
     <meta name="description" content="Your description goes here" />
     <meta name="keywords" content="your,keywords,goes,here" />
     <meta name="author" content="Henry" />
-    <title>显示文章</title>
+    <title></title>
     <link rel="stylesheet" href="css/bootstrap.css" />
 </head>
 <body>
@@ -23,14 +23,16 @@
     <!--<a href="addArticle.html" class="btn btn-success col-md-2 col-md-offset-5">继续添加文章</a>-->
 <!--</div>-->
 <script src="js/jquery/jquery.min.js"></script>
+<script src="js/jquery/jquery.cookie.js"></script>
 <script src="js/self/main.js"></script>
 <script>
-    param['dataJson'] = JSON.stringify({tag: 0});
-    $.post(server + "selectByTag", param, function (data) {
+    param['dataJson'] = JSON.stringify({articleUuid: $.cookie('articleUuid') });
+    $.post(server + "selectArticleByUuid", param, function (data) {
         var dataJson = $.parseJSON(data);
-        $('#title').text(dataJson.data[0].title);
-        $('#author').text(dataJson.data[0].author);
-        $('#content').append(dataJson.data[0].content);
+        document.title = dataJson.data.title;
+        $('#title').text(dataJson.data.title);
+        $('#author').text(dataJson.data.author);
+        $('#content').append(dataJson.data.content);
     });
 </script>
 </body>
