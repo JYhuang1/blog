@@ -22,12 +22,24 @@ function selectByTag(){
                 $('#content').append(
                     "<div style='border-bottom: 1px solid #eeeeee;padding-bottom: 4px'>"+
                     "<h2 style='font-size: 20px'><a href='detail.html' id='uuid"+i+"'>"+dataJson.data[i].title+"</a></h2>"+
-                    "<p style='margin-top: 5px;margin-bottom: 5px;font-size: 14px'>"+dataJson.data[i].brief+"</p>"+
-                    "<div class='row' style='font-size: 14px'>" +
-                    "<span class='col-sm-3 glyphicon glyphicon-thumbs-up'>&nbsp;1</span>"+
-                    "<span class='col-sm-3 glyphicon glyphicon-envelope'>&nbsp;"+dataJson.data[i].comments+"</span>"+
-                    "<span class='col-sm-3 glyphicon glyphicon-time'>&nbsp;"+dateToString(dataJson.data[i].createTime)+"</span>"+
-                    "<span class='col-sm-3 glyphicon glyphicon-tag'>&nbsp;"+getTagNameByTagNo(dataJson.data[i].tag)+"</span>"+
+                    "<p style='margin-top: 5px;margin-bottom: 5px;font-size: 16px'>"+dataJson.data[i].brief+"</p>"+
+                    "<div class='row' style='font-size: 16px'>" +
+                    "<span class='col-sm-3 '>" +
+                    "<span class='glyphicon glyphicon-thumbs-up'></span>" +
+                    "<span style='margin-left: 3px'>1</span>"+
+                    "</span>"+
+                    "<span class='col-sm-3' >" +
+                    "<span class=' glyphicon glyphicon-envelope'></span>" +
+                    "<span style='margin-left: 3px'>"+dataJson.data[i].comments+"</span>"+
+                    "</span>"+
+                    "<span class='col-sm-3'>" +
+                    "<span class=' glyphicon glyphicon-time'></span>" +
+                    "<span style='margin-left: 3px'>"+dateToString(dataJson.data[i].createTime)+"</span>"+
+                    "</span>"+
+                    "<span class='col-sm-3'>" +
+                    "<span class=' glyphicon glyphicon-tag'></span>" +
+                    "<span style='margin-left: 3px'>"+getTagNameByTagNo(dataJson.data[i].tag)+"</span>"+
+                    "</span>"+
                     "</div>"+
                     "</div>"
                 );
