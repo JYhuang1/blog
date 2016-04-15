@@ -55,15 +55,14 @@
 
     function Editor(){}
     Editor.prototype.addArticle = function() {
-
-//        localStorage.articleNum = tag;
+        console.log($('.simditor-body').html());
         param['dataJson'] = JSON.stringify({
             author:"拾荒者",
             title: document.getElementById('title').value,
             fromAuthor: document.getElementById('fromAuthor').value,
             fromUrl: document.getElementById('fromUrl').value,
             brief: document.getElementById('brief').value,
-            content: simditor.sync(this),
+            content: $('.simditor-body').html(),
             tag: document.getElementById('tag').value
         });
         $.post(server + "addArticle", param, function (data) {

@@ -7,7 +7,7 @@ $(".banner").on("click",function(){
     $(this).children('ul').toggle();
 });
 var server = "http://"+location.hostname+ ":8080/blog/";
-console.log(server);
+//var server = "http://115.28.33.164:8080/blog/";
 var param = {};
 function selectByTag(){
     param['dataJson'] = JSON.stringify({author:"拾荒者"});

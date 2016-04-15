@@ -474,7 +474,7 @@ Formatter = (function(superClass) {
     this.editor = this._module;
     this._allowedTags = $.merge(['br', 'span', 'a', 'img', 'b', 'strong', 'i', 'strike', 'u', 'font', 'p', 'ul', 'ol', 'li', 'blockquote', 'pre', 'code', 'h1', 'h2', 'h3', 'h4', 'hr'], this.opts.allowedTags);
     this._allowedAttributes = $.extend({
-      img: ['src', 'alt', 'width', 'height', 'data-non-image'],
+      img: ['src', 'alt', 'width', 'height', 'data-non-image','class'],
       a: ['href', 'target'],
       font: ['color'],
       code: ['class']
@@ -4536,21 +4536,20 @@ ImageButton = (function(superClass) {
     }
     img = new Image();
     img.onload = (function(_this) {
+      //$img.addClass('img-responsive');
       return function() {
         var height, width;
         if (!$img.hasClass('loading') && !$img.hasClass('uploading')) {
           return;
         }
-        if(this.width <500){
-          width = this.width;
-        }else{
-          width = 500;
-        }
-        //height = ;
+
+        width = img.width;
+        height = img.height;
         $img.attr({
+          class:"img-responsive",
           src: src,
           width: width,
-          //height: height,
+          height: height,
           'data-image-size': width + ',' + height
         }).removeClass('loading');
         if ($img.hasClass('uploading')) {

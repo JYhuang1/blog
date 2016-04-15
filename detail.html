@@ -32,11 +32,12 @@
     $.post(server + "selectArticleByUuid", param, function (data) {
         var dataJson = $.parseJSON(data);
         document.title = dataJson.data.title;
-        $('#title').text("作者:"+dataJson.data.title);
-        $('#author').text(dataJson.data.author);
+        $('#title').text(dataJson.data.title);
+        $('#author').text("作者:"+dataJson.data.author);
         $('#content').append(dataJson.data.content);
+        $('img').className = "img-responsive";
     });
-    $('img').setAttribute('class','img-responsive');
+
 </script>
 </body>
 </html>
