@@ -28,7 +28,7 @@
 <script src="js/jquery/jquery.cookie.js"></script>
 <script src="js/self/main.js"></script>
 <script>
-    param['dataJson'] = JSON.stringify({articleUuid: $.cookie('articleUuid') });
+    param['dataJson'] = JSON.stringify({articleUuid:getUrlParam().uuid});
     $.post(server + "selectArticleByUuid", param, function (data) {
         var dataJson = $.parseJSON(data);
         document.title = dataJson.data.title;
@@ -37,7 +37,6 @@
         $('#content').append(dataJson.data.content);
         $('img').className = "img-responsive";
     });
-
 </script>
 </body>
 </html>

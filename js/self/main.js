@@ -18,10 +18,9 @@ function selectByTag(){
             console.log(dataJson.data.length);
             for(var i=0;i<num;i++){
                 console.log(dataJson.data[i].tag);
-
                 $('#content').append(
                     "<div style='border-bottom: 1px solid #eeeeee;padding-bottom: 4px'>"+
-                    "<h2 style='font-size: 20px'><a href='detail.html' id='uuid"+i+"'>"+dataJson.data[i].title+"</a></h2>"+
+                    "<h2 style='font-size: 20px'><a id='uuid"+i+"'>"+dataJson.data[i].title+"</a></h2>"+
                     "<p style='margin-top: 5px;margin-bottom: 5px;font-size: 16px'>"+dataJson.data[i].brief+"</p>"+
                     "<div class='row' style='font-size: 16px'>" +
                     "<span class='col-sm-3 '>" +
@@ -45,8 +44,8 @@ function selectByTag(){
                 );
                 document.getElementById("uuid"+i+"").value=dataJson.data[i].uuid;
             }
-            $("a[id^='uuid']").click(function () {
-                document.cookie="articleUuid="+document.getElementById($(this).attr("id")).value;
+            $("a[id^='uuid']").on('click',function () {
+                location.href = "detail.html?uuid="+document.getElementById($(this).attr("id")).value;
             });
         }else{
             alert(dataJson.message);
@@ -54,7 +53,6 @@ function selectByTag(){
     })
 }
 function getTagNameByTagNo(tagNo){
-
     var tagName = null;
     param['dataJson'] = JSON.stringify({tagNo:tagNo})
     $.ajaxSetup({
@@ -72,4 +70,17 @@ function dateToString(longDate){
     month = date.getMonth()+1;
     var returnDate = date.getFullYear().toString().substring(2,4)+"-"+month+"-"+date.getDate();
     return returnDate;
+}
+
+function getUrlParam(){
+    var url = location.search;
+    var theParam = new Object();
+    if (url.indexOf("?") != -1) {
+        var str = url.substr(1);
+        strs = str.split("&");
+        for(var i = 0; i < strs.length; i ++) {
+            theParam[strs[i].split("=")[0]]=(strs[i].split("=")[1]);
+        }
+    }
+    return theParam;
 }
