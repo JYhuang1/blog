@@ -18,7 +18,7 @@ function selectByTag(){
             for(var i=0;i<num;i++){
                 $('#content').append(
                     "<div>"+
-                    "<span style='font-size: 18px;' id='uuid"+i+"'>"+dataJson.data[i].title+"</span>"+
+                    "<p style='font-size: 18px;' id='uuid"+i+"'>"+dataJson.data[i].title+"</p>"+
                     "<div class='row' style='font-size: 16px'>"+
                     "<span class='col-sm-3'>"+
                     "<span class='glyphicon glyphicon-thumbs-up'></span>"+
@@ -41,7 +41,7 @@ function selectByTag(){
                 );
                 document.getElementById("uuid"+i+"").value=dataJson.data[i].uuid;
             }
-            $("span[id^='uuid']").on('click',function () {
+            $("p[id^='uuid']").on('click',function () {
                 location.href = "detail.html?uuid="+document.getElementById($(this).attr("id")).value;
             });
         }else{
