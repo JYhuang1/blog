@@ -18,7 +18,7 @@ function selectByTag(){
             for(var i=0;i<num;i++){
                 $('#content').append(
                     "<div>"+
-                    "<p style='font-size: 18px;' id='uuid"+i+"'>"+dataJson.data[i].title+"</p>"+
+                    "<span style='font-size: 18px;' id='uuid"+i+"'>"+dataJson.data[i].title+"</span>"+
                     "<div class='row' style='font-size: 16px'>"+
                     "<span class='col-sm-3'>"+
                     "<span class='glyphicon glyphicon-thumbs-up'></span>"+
