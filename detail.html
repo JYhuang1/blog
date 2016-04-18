@@ -13,10 +13,8 @@
 <body>
 <div class="container">
     <div class="row" style="margin-top: 20px;margin-bottom: 60px">
-        <div class="col-md-6 col-md-offset-3 col-sm-12" style="border: 1px solid #eeeeee;padding: 10px 30px 10px 30px">
-            <h4 class="text-center"  id="title"></h4>
-            <p><span id="author"></span></p>
-            <hr>
+        <div class="col-md-6 col-md-offset-3 col-sm-12" style="border: 1px solid #eeeeee;">
+            <h4 class="text-center"  id="title"></h4><hr>
             <div id="content"></div>
         </div>
     </div>
@@ -33,7 +31,7 @@
         var dataJson = $.parseJSON(data);
         document.title = dataJson.data.title;
         $('#title').text(dataJson.data.title);
-        $('#author').text("作者:"+dataJson.data.author);
+//        $('#author').text("作者:"+dataJson.data.author);
         $('#content').append(dataJson.data.content);
         $('img').className = "img-responsive";
     });

@@ -15,19 +15,16 @@ function selectByTag(){
         var dataJson = $.parseJSON(data);
         if (dataJson.status == 0){
             var num = dataJson.data.length;
-            console.log(dataJson.data.length);
             for(var i=0;i<num;i++){
-                console.log(dataJson.data[i].tag);
                 $('#content').append(
-                    "<div style='border-bottom: 1px solid #eeeeee;padding-bottom: 4px'>"+
-                    "<h2 style='font-size: 20px'><a id='uuid"+i+"'>"+dataJson.data[i].title+"</a></h2>"+
-                    "<p style='margin-top: 5px;margin-bottom: 5px;font-size: 16px'>"+dataJson.data[i].brief+"</p>"+
-                    "<div class='row' style='font-size: 16px'>" +
-                    "<span class='col-sm-3 '>" +
-                    "<span class='glyphicon glyphicon-thumbs-up'></span>" +
+                    "<div>"+
+                    "<p style='font-size: 18px;' id='uuid"+i+"'>"+dataJson.data[i].title+"</p>"+
+                    "<div style='font-size: 16px'>"+
+                    "<span class='col-sm-3'>"+
+                    "<span class='glyphicon glyphicon-thumbs-up'></span>"+
                     "<span style='margin-left: 3px'>1</span>"+
                     "</span>"+
-                    "<span class='col-sm-3' >" +
+                    "<span class='col-sm-3'>" +
                     "<span class=' glyphicon glyphicon-envelope'></span>" +
                     "<span style='margin-left: 3px'>"+dataJson.data[i].comments+"</span>"+
                     "</span>"+
@@ -40,11 +37,11 @@ function selectByTag(){
                     "<span style='margin-left: 3px'>"+getTagNameByTagNo(dataJson.data[i].tag)+"</span>"+
                     "</span>"+
                     "</div>"+
-                    "</div>"
+                    "</div><hr style='margin: 10px 0px 10px 0px'>"
                 );
                 document.getElementById("uuid"+i+"").value=dataJson.data[i].uuid;
             }
-            $("a[id^='uuid']").on('click',function () {
+            $("span[id^='uuid']").on('click',function () {
                 location.href = "detail.html?uuid="+document.getElementById($(this).attr("id")).value;
             });
         }else{
@@ -54,14 +51,13 @@ function selectByTag(){
 }
 function getTagNameByTagNo(tagNo){
     var tagName = null;
-    param['dataJson'] = JSON.stringify({tagNo:tagNo})
+    param['dataJson'] = JSON.stringify({tagNo:tagNo});
     $.ajaxSetup({
         async: false
     });
     $.post(server+"getTagNameByTagNo",param,function(data){
         tagName = $.parseJSON(data).data;
     });
-    console.log(tagName);
     return tagName;
 }
 
