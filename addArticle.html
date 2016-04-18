@@ -18,17 +18,30 @@
 <body>
 <div class="row" style="margin-top: 20px;padding:10px 10px 10px 10px;margin-bottom: 50px">
     <div  class="col-md-6 col-md-offset-3 col-sm-12">
-        <input id="title" style="width: 100%;height: 50px;font-size: 20px;"  placeholder="这里输入标题/不多于18字">
-        <input id="tag"  style="height: 35px;" placeholder="文章标签">
+        <div id="head" style="margin-bottom: 5px">
+            <input id="title" style="width: 100%;height: 50px;font-size: 20px;"  placeholder="这里输入标题/不多于18字">
+            <label for="tag">文章标签</label>
+            <select id="tag"  style="height: 35px;">
+                <option value = 0>请选择</option>
+                <option value = 1>javascript</option>
+                <option value = 2>React</option>
+                <option value = 3>HTML</option>
+                <option value = 4>CSS</option>
+                <option value = 5>Python</option>
+                <option value = 6>科幻</option>
+                <option value = 7>骑行</option>
+            </select>
+        </div>
+
         <textarea id="editor" autofocus>
             <!--内容在这里-->
         </textarea>
-        <div style="border: 1px solid #eeeeee;padding: 10px;margin-top: 5px">
+        <!--<div style="border: 1px solid #eeeeee;padding: 10px;margin-top: 5px">
             <h5 class="text-info">转载信息</h5>
             <input id="fromAuthor" style="height: 35px;width: 20%" placeholder="原作者">
             <input id="fromUrl" style="height: 35px;width: 75%" placeholder="原文链接">
-        </div>
-        <div style="border: 1px solid #eeeeee;padding: 10px;margin-top: 5px">
+        </div>-->
+        <!--<div style="border: 1px solid #eeeeee;padding: 10px;margin-top: 5px">
             <h5 class="text-info">发布样式编辑</h5>
             <button id="uploadNative" class="btn btn-success" >本地上传</button>
             <button id="chooseFromKu" class="btn btn-success">图片库选择</button><br/>
@@ -38,11 +51,11 @@
             <textarea id="brief" style="width: 100%">
 
             </textarea>
-        </div>
+        </div>-->
     </div>
 </div>
 <div class="navbar-fixed-bottom " style="width: 100%;height: 50px;border-top: 1px solid #eeeeee ;padding: 10px;background: white">
-    <button class="btn btn-success col-md-2 col-md-offset-2" onclick={consle()}>使用模板</button>
+    <!--<button class="btn btn-success col-md-2 col-md-offset-2" onclick={consle()}>使用模板</button>-->
     <button class="btn btn-success col-md-1 col-md-offset-5" onclick={editor.addArticle()}>提交</button>
 </div>
 <script type="text/javascript" src="js/jquery/jquery.min.js"></script>
@@ -55,13 +68,13 @@
 
     function Editor(){}
     Editor.prototype.addArticle = function() {
-        console.log($('.simditor-body').html());
+        console.log(document.getElementById('tag').value);
         param['dataJson'] = JSON.stringify({
             author:"拾荒者",
             title: document.getElementById('title').value,
-            fromAuthor: document.getElementById('fromAuthor').value,
-            fromUrl: document.getElementById('fromUrl').value,
-            brief: document.getElementById('brief').value,
+            fromAuthor: "none",
+            fromUrl: "none",
+            brief: "none",
             content: $('.simditor-body').html(),
             tag: document.getElementById('tag').value
         });

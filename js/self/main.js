@@ -9,7 +9,7 @@ $(".banner").on("click",function(){
 var server = "http://"+location.hostname+ ":8080/blog/";
 //var server = "http://115.28.33.164:8080/blog/";
 var param = {};
-function selectByTag(){
+function selectByAuthor(){
     param['dataJson'] = JSON.stringify({author:"拾荒者"});
     $.post(server+"selectByAuthor",param,function(data){
         var dataJson = $.parseJSON(data);
